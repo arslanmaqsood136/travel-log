@@ -23,7 +23,7 @@ const App = () => {
     <ReactMapGL
       {...viewport}
       mapStyle="mapbox://styles/arslanmaqsood/ck6xldb890luh1is22kdak4e9"
-      mapboxApiAccessToken="pk.eyJ1IjoiYXJzbGFubWFxc29vZCIsImEiOiJjazZ4a3JrdnQwbW50M2htb2c2MHI1NGk5In0.aB8aqFm7kl76yyy-ryqM5w"
+      mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
       onViewportChange={setViewport}
     >
       {logEntries.map(entry => (
@@ -35,21 +35,15 @@ const App = () => {
           offsetTop={-24}
         >
           <div>
-          <svg
-            className="marker"
-            style={{
-              width:'24px',
-              height:'24px'
-            }}
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"  
-          >
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-            <circle cx="12" cy="10" r="3"></circle>
-          </svg>
+            <img
+              style={{
+                width: `${6 * viewport.zoom}px`,
+                height: `${6 * viewport.zoom}px`
+              }}
+              className="marker"
+              src="https://i.imgur.com/y0G5YTX.png"
+              alt="marker"
+            />
           </div>
         </Marker>
       ))}
